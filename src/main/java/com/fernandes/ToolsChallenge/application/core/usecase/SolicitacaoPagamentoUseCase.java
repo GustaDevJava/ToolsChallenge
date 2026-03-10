@@ -37,7 +37,15 @@ public class SolicitacaoPagamentoUseCase implements SolicitacaoPagamentoInputPor
         descricao.setNsu("1234567890");
         descricao.setCodigoAutorizacao(String.valueOf(ThreadLocalRandom.current()
                 .nextLong(100_000_000L, 1_000_000_000L)));
-        descricao.setStatus(Status.AUTORIZADO);
+
+
+        boolean aprovada = ThreadLocalRandom.current().nextBoolean();
+
+        if (aprovada){
+            descricao.setStatus(Status.AUTORIZADO);
+        }else {
+            descricao.setStatus(Status.NEGADO);
+        }
 
         transacao.setDescricao(descricao);
         transacao = solicitacaoPagamentoOutputPort.salvarTransacao(pagamento.getTransacao());

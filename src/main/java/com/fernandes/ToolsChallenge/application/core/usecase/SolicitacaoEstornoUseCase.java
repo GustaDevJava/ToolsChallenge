@@ -3,6 +3,7 @@ package com.fernandes.ToolsChallenge.application.core.usecase;
 import com.fernandes.ToolsChallenge.application.core.domain.Pagamento;
 import com.fernandes.ToolsChallenge.application.core.domain.Transacao;
 import com.fernandes.ToolsChallenge.application.core.domain.enums.Status;
+import com.fernandes.ToolsChallenge.application.core.exception.ApiException;
 import com.fernandes.ToolsChallenge.application.core.exception.ObjectNotFoundException;
 import com.fernandes.ToolsChallenge.application.ports.in.SolicitacaoEstornoInputPort;
 import com.fernandes.ToolsChallenge.application.ports.out.BuscarSolicitacaoPagamentoOutputPort;
@@ -31,6 +32,11 @@ public class SolicitacaoEstornoUseCase implements SolicitacaoEstornoInputPort {
         }
 
         Transacao transacao = transacaoBD.get();
+
+        if(transacao.getDescricao().getStatus().equals(Status.NEGADO)){
+            throw new ApiException(400,"Pagamento não pode ser estornado!");
+        }
+
         transacao.getDescricao().setStatus(Status.CANCELADO);
 
         transacao = solicitacaoPagamentoOutputPort.salvarTransacao(transacao);

@@ -37,6 +37,14 @@ Todos os campos da requisição são obrigatórios e não aceitam valores nulos 
 - `codigoAutorizacao`
 - `status`
 
+### Devo gerar um ID novo ?
+
+**Solução:**
+
+Como o ID é recebido na chamada, optei por mantê-lo como identificador principal e único. Dessa forma, 
+caso seja recebido um ID já existente, a API apenas retorna o pagamento já registrado no banco de dados. 
+Considerando um cenário real, entendo que esse comportamento seria mais adequado do que lançar uma exceção.
+
 Durante o desenvolvimento procurei focar em:
 
 - Organização e separação de responsabilidades
