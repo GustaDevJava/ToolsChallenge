@@ -1,0 +1,117 @@
+{
+  "info": {
+    "_postman_id": "a2c23dac-de4b-466c-afe7-fa93cf479270",
+    "name": "TollsChallange",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "25858281"
+  },
+  "item": [
+    {
+      "name": "Consulta",
+      "item": [
+        {
+          "name": "Consulta todos",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/consultas",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "consultas"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Consulta Por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/consultas/100023568900001",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "consultas",
+                "100023568900001"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Solicitação Pagamento",
+      "item": [
+        {
+          "name": "Solicitação Pagamento",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"transacao\": {\r\n        \"cartao\": \"4444********1234\",\r\n        \"id\": \"100023568900002\",\r\n        \"descricao\": {\r\n            \"valor\": \"500.50\",\r\n            \"dataHora\": \"01/05/2021 18:30:00\",\r\n            \"estabelecimento\": \"PetShop Mundo Cão\"\r\n        }, \r\n        \"formaPagamento\": {\r\n            \"tipo\": \"AVISTA\",\r\n            \"parcelas\": \"1\"\r\n        }\r\n    }\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/pagamentos",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "pagamentos"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Estorno",
+      "item": [
+        {
+          "name": "Solicitação de Estorno",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/estornos?id=1000235689000037",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "estornos"
+              ],
+              "query": [
+                {
+                  "key": "id",
+                  "value": "1000235689000037"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
